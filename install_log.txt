@@ -1,0 +1,39 @@
+Be root for all of this
+  sudo bash
+  
+Install packages
+  udhcpd
+  hostapd
+  apache2
+  php5
+  dnsmasq
+  
+Edit files
+  /etc/udhcpd.conf
+  /etc/default/udhcpd
+  /etc/network/interfaces
+  /etc/hostapd/hostapd.conf
+  /etc/sysctl.conf
+  /etc/hosts
+  
+Turn on ip_forwarding(nat)
+  sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+  iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+  iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+
+Save the if_forarding
+  sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+Had problems with the hostasp interfering with wlan0 settting is ip address so I called it from roots cron. 
+@reboot /usr/sbin/service hostapd start 2>&1 | /usr/bin/logger
+@reboot /usr/sbin/service udhcpd start 2>&1 | /usr/bin/logger
+  
+logger puts any output in /var/log/use.log
+
+
+
+Websites
+  http://elinux.org/RPI-Wireless-Hotspot
+  http://blog.nemik.net/2015/08/dash-button-corral/
+  
