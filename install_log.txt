@@ -22,6 +22,11 @@ Turn on ip_forwarding(nat)
   iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
   iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
 
+This will force to use loacl dns server
+  iptables -t nat -I PREROUTING -j DNAT --destination 8.8.8.8 --to 192.168.51.1
+  iptables -t nat -I PREROUTING -j DNAT --destination 8.8.4.4 --to 192.168.51.1
+
+
 Save the if_forarding
   sh -c "iptables-save > /etc/iptables.ipv4.nat"
 
