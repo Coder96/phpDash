@@ -37,6 +37,12 @@ Had problems with the hostasp interfering with wlan0 settting is ip address so I
 logger puts any output in /var/log/use.log
 
 
+Apache2
+  mkdir /etc/apache2/ssl
+  openssl req -x509 -nodes -days 2095 -newkey rsa:2048 -out /etc/apache2/ssl/server.crt -keyout /etc/apache2/ssl/server.key
+  a2enmod ssl
+  ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/000-default-ssl.conf
+  
 
 Websites
   http://elinux.org/RPI-Wireless-Hotspot
