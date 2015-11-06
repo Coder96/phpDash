@@ -47,4 +47,4 @@ Apache2
 Websites
   http://elinux.org/RPI-Wireless-Hotspot
   http://blog.nemik.net/2015/08/dash-button-corral/
-  
+  http://hallard.me/enable-ssl-for-apache-server-in-5-minutes/
