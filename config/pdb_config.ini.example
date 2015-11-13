@@ -1,0 +1,14 @@
+[General]
+User=
+Pass=
+
+[UDI994i]
+URL=https://<ip or domain name>
+User=
+PAss=
+
+#One entry per mac address
+[10:ae:60:4f:AA:AA] 
+system=UDI994i
+action=urlpath
+urlpath=/rest/programs/<someProgramid>/run
