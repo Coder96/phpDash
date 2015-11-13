@@ -1,0 +1,7 @@
+change 
+
+NTPD_OPTS='-g'
+
+to turn of ip6
+
+NTPD_OPTS='-4 -g'
