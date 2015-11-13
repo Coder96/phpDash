@@ -42,12 +42,13 @@ for(;;){
 		if(preg_match($Interface, $line) AND preg_match($authenticated, $line)){
 			$items = explode(' ', $line);
 			
-			echo($items[7] . "\n");
-			echo $pdbConfig['MAC_' . $items[7]]['ButtonName'] . "\n";
+	#		echo($items[7] . "\n");
+			$macAddress = strtoupper($items[7]);
+#			echo $pdbConfig['MAC_' . $macAddress]['buttonname'] . "\n";
 			
-			if(isset($pdbConfig['MAC_' . $items[7]])){
-				if($pdbConfig['MAC_' . $items[7]]['Active'] == 1){
-					
+			if(isset($pdbConfig['MAC_' . $macAddress])){
+				if($pdbConfig['MAC_' . $macAddress]['active'] == 1){
+					system("$pdbBaseDir/bin/pdb_work.php '$macAddress' ");
 					
 				}
 			}

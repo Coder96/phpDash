@@ -148,7 +148,7 @@ function loginGood($loginName, $loginPass){
 			return false;
 		}
     
-		if( $loginName == $pdbConfig['General']['User'] && $loginPass == $pdbConfig['General']['Pass'] ){
+		if( $loginName == $pdbConfig['General']['user'] && $loginPass == $pdbConfig['General']['pass'] ){
 			// Authentication successful - Set session
 //			session_start();
 //			$_SESSION['auth'] = 1;
@@ -163,7 +163,7 @@ function loginGood($loginName, $loginPass){
 	return false;
 }
 #*************************************************************************************************************
-function loginForm($msg){
+function loginForm($msg=''){
 	echo('
 <form action="" method="post" name="Login_Form">
   <table width="400" border="0" align="center" cellpadding="5" cellspacing="1" class="Table">

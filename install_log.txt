@@ -1,3 +1,5 @@
+The raspberrry pi is deicated for this purpose
+
 Be root for all of this
   sudo bash
   
@@ -16,13 +18,15 @@ Edit files
   /etc/sysctl.conf
   /etc/hosts
   
-Turn on ip_forwarding(nat)
+Turn on ip_forwarding(nat). or edit the /etc/sysctl.conf
   sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+  
+Needed to finish activation of button can be disabled when not enabling a buttun
   iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
   iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
   iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
 
-This will force to use loacl dns server
+This will force to use loacl dns server. This is needed to redirect the button so not to connect to amazon. Disable when activating a button.
   iptables -t nat -I PREROUTING -j DNAT --destination 8.8.8.8 --to 192.168.51.1
   iptables -t nat -I PREROUTING -j DNAT --destination 8.8.4.4 --to 192.168.51.1
 
@@ -37,12 +41,14 @@ Had problems with the hostasp interfering with wlan0 settting is ip address so I
 logger puts any output in /var/log/use.log
 
 
-Apache2
+Apache2 - used this to try and have the button conect the local server. Then might be able to send it back a 200.
   mkdir /etc/apache2/ssl
   openssl req -x509 -nodes -days 2095 -newkey rsa:2048 -out /etc/apache2/ssl/server.crt -keyout /etc/apache2/ssl/server.key
   a2enmod ssl
   ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/000-default-ssl.conf
   
+Web interface. Basic config and basic user pass word from the pdb_config.ini file. Not sure where to go with this.
+	ln -s /opt/phpDashButton/public/ /var/www/html/pdb
 
 Websites
   http://elinux.org/RPI-Wireless-Hotspot
