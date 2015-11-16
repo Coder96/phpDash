@@ -21,6 +21,7 @@ Edit files
   /etc/hostapd/hostapd.conf
   /etc/sysctl.conf
   /etc/hosts
+  etc/ntp.conf
   
 Turn on ip_forwarding(nat). tempary 
   echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -29,12 +30,14 @@ Edit the /etc/sysctl.conf for permanent.
   net.ipv4.ip_forward=1
   
 
-This will force to use loacl dns server. This is needed to redirect the button so to connect to local server not amazon. May need to disable when activating a button.
+This will force to use loacl dns server. This is needed to redirect the button to connect to local server not amazon. May need to disable when activating a button.
   iptables -t nat -I PREROUTING -j DNAT --destination 8.8.8.8 --to 192.168.51.1
   iptables -t nat -I PREROUTING -j DNAT --destination 8.8.4.4 --to 192.168.51.1
 
 Save the if_forarding
   iptables-save > /etc/iptables.ipv4.dnat
+
+reboot to clear
 
 Needed to finish activation of button can be disabled when not enabling a buttun
   iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
@@ -44,11 +47,13 @@ Needed to finish activation of button can be disabled when not enabling a buttun
 Save the if_forarding
   iptables-save > /etc/iptables.ipv4.nat
 
+Reboot to clear
+
 Had problems with the hostasp interfering with wlan0 settting is ip address so I called it from roots cron. 
 @reboot /usr/sbin/service hostapd start 2>&1 | /usr/bin/logger
 @reboot /usr/sbin/service udhcpd start 2>&1 | /usr/bin/logger
   
-logger puts any output in /var/log/use.log
+logger puts any output in /var/log/user.log
 
 
 Apache2 - used this to try and have the button conect the local server. Then might be able to send it back a 200.
