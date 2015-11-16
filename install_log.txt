@@ -22,8 +22,11 @@ Edit files
   /etc/sysctl.conf
   /etc/hosts
   
-Turn on ip_forwarding(nat). or edit the /etc/sysctl.conf
-  sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+Turn on ip_forwarding(nat). tempary 
+  echo 1 > /proc/sys/net/ipv4/ip_forward
+  
+Edit the /etc/sysctl.conf for permanent.
+  net.ipv4.ip_forward=1
   
 Needed to finish activation of button can be disabled when not enabling a buttun
   iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
