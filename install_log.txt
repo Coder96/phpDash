@@ -3,6 +3,10 @@ The raspberrry pi is deicated for this purpose
 Be root for all of this
   sudo bash
   
+  update-rc.d avahi-daemon disable
+  update-rc.d dhcpcd disable
+  
+
 Install packages
   udhcpd
   hostapd
