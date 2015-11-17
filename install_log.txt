@@ -79,7 +79,9 @@ As the new user. from /opt
 If you want to use the web interface. Back as root
   ln -s /opt/phpDashButton/public/ /var/www/html/pdb
   
-If you alread havent canged the /var/www/html/index.html to be blank.
+If the /var/www/html/index.html is default change it to be blank.
+
+In the root crontab run /opt/phpDashButton/bin/pdb_monitorsyslog.php every 1 min. It will check it self to see if it's al ready runnig.
 
 Websites
   http://elinux.org/RPI-Wireless-Hotspot
