@@ -73,6 +73,14 @@ Add user withe the same permissions as www-data so the webserver can access the 
 mkdir /opt/phpDashButton
 chown <user>:www-data /opt/phpDashButton
 
+As the new user. from /opt
+  git clone https://github.com/Coder96/phpDashButton.git
+
+If you want to use the web interface. Back as root
+  ln -s /opt/phpDashButton/public/ /var/www/html/pdb
+  
+If you alread havent canged the /var/www/html/index.html to be blank.
+
 Websites
   http://elinux.org/RPI-Wireless-Hotspot
   http://blog.nemik.net/2015/08/dash-button-corral/
