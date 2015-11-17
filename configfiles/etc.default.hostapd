@@ -1,0 +1,7 @@
+#Change
+
+#DAEMON_CONF=""
+
+#to 
+
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
