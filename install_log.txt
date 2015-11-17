@@ -68,6 +68,10 @@ Apache2 - used this to try and have the button conect the local server. Then mig
   
 Web interface. Basic config and basic user pass word from the pdb_config.ini file. Not sure where to go with this.
 	ln -s /opt/phpDashButton/public/ /var/www/html/pdb
+	
+Add user withe the same permissions as www-data so the webserver can access the files.
+mkdir /opt/phpDashButton
+chown <user>:www-data /opt/phpDashButton
 
 Websites
   http://elinux.org/RPI-Wireless-Hotspot
