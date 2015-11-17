@@ -18,13 +18,14 @@ update-rc.d udhcpd disable
 update-rc.d hostapd disable
   
 Edit files
-  /etc/udhcpd.conf
+  /etc/default/hostapd
   /etc/default/udhcpd
-  /etc/network/interfaces
   /etc/hostapd/hostapd.conf
+  /etc/network/interfaces
   /etc/sysctl.conf
   /etc/hosts
-  etc/ntp.conf
+  /etc/ntp.conf
+  /etc/udhcpd.conf
   
 Turn on ip_forwarding(nat). tempary 
   echo 1 > /proc/sys/net/ipv4/ip_forward
