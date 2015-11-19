@@ -48,7 +48,7 @@ for(;;){
 			
 			if(isset($pdbConfig['MAC_' . $macAddress])){
 				if($pdbConfig['MAC_' . $macAddress]['active'] == 1){
-					system("$pdbBaseDir/bin/pdb_work.php '$macAddress' ");
+					system("$pdbBaseDir/bin/pdb_work.php '$macAddress' 2>&1 >/dev/null &");
 					
 				}
 			}
