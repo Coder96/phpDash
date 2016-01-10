@@ -1,14 +1,37 @@
 [General]
-User=
-Pass=
+; This is for the web login
+User=user
+Pass="pass"
 
-[UDI994i]
-URL=https://<ip or domain name>
-User=
-PAss=
+[System_UDI994i]
+url="https://<ip or domain name>"
+description="Home automation system."
+user=user
+; Put in quests. Parser has trouble with passwords starting with non standard characters
+psss="pass"
+; not used yet
+type=UDI9941
+; debugging for any event on this system. ni
+debug=1
 
-#One entry per mac address
-[10:ae:60:4f:AA:AA] 
+
+; One entry per mac address. Make uppper case
+[MAC_AN:AN:AN:AN:AN:AN] 
+; 1 for active button other wize will not run.
+active=1
+; Name on button
+buttonName=a"mazon elements"
+; Description of action
+description="Sends text message."
+; to match up with the System_ group name can be anything
 system=UDI994i
+;
+; urlpath - will attch this to the url on the system for connecting
+; command - use this to call a command on he system. ni
+; 
+;
+
 action=urlpath
-urlpath=/rest/programs/<someProgramid>/run
+urlpath="/rest/programs/<someProgramid>/run"
+; debugging on just this MAC. 1 = active else not
+debug=0

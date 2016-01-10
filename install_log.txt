@@ -12,6 +12,7 @@ Install packages
   hostapd
   apache2
   php5
+  php5-curl
   dnsmasq
   
 update-rc.d udhcpd disable
@@ -26,6 +27,7 @@ Edit files
   /etc/hosts
   /etc/ntp.conf
   /etc/udhcpd.conf
+  /etc/rsyslog.conf
   
 Turn on ip_forwarding(nat). tempary 
   echo 1 > /proc/sys/net/ipv4/ip_forward

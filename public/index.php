@@ -97,11 +97,11 @@ function listEntities($type){
 		global $pdbConfig;
 		
 		if($type == 'Systems'){
-			$prefix = 'system_';
-			$feild1 = 'URL';
+			$prefix = 'System_';
+			$feild1 = 'description';
 		} else {
 			$prefix = 'MAC_';
-			$feild1 = 'ButtonName';
+			$feild1 = 'description';
 		}
 	
 	echo("
@@ -118,10 +118,13 @@ function listEntities($type){
     	<form method=post >
 				<input type=hidden name=loginname value='{$_POST['loginname']}' >
 				<input type=hidden name=loginpass value='{$_POST['loginpass']}' >
-				<input type=hidden name=toolbar value='List $type' >
+				<input type=hidden name=lastaction value='List' >
+				<input type=hidden name=list value='$type' >
 				<input type=hidden name=edit value='" . substr($heading, strlen($prefix)) . "' >
+				
       	<td align='left' >" . substr($heading, strlen($prefix)) . " - {$key[$feild1]} </td>
-      	<td><input name='Submit' type='submit' value='Edit' ></td>
+      	
+      	<td><input name='toolbar' type='submit' value='Edit' ></td>
     	</form>
 	</tr>
     ");
@@ -135,6 +138,27 @@ function listEntities($type){
 			");	
 }
 #*************************************************************************************************************
+function edit($iType){
+	
+	echo("
+  <table width='400' border='0'  cellpadding='5' cellspacing='1' class='Table'>
+    <tr>
+    	<td align='left' >$type List</td>
+    </tr>
+    ");	
+	
+	
+	
+	
+	echo("
+    <tr>  
+      <td></td>
+    </tr>
+  </table>
+			");
+	
+	
+}
 #*************************************************************************************************************
 #*************************************************************************************************************
 function loginGood($loginName, $loginPass){
